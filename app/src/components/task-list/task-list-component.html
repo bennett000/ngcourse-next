@@ -11,9 +11,9 @@
   </header>
   <div class="mt4 mb4" ui-view="actionArea"></div>
   <div class="md-col-8 mx-auto rounded tasks-list mb4">
-    <ngc-task ng-repeat="task in ctrl.tasks" 
-      task="task" 
-      user="ctrl.users[task.owner]">
+    <ngc-task ng-repeat="task in ctrl.tasks"
+      [task]="task"
+      [user]="ctrl.users[task.owner]">
     </ngc-task>
   </div>
 </div>
