@@ -39,7 +39,7 @@ import {
   AuthenticationActions
 } from './actions';
 
-bundle('ng-course-next.ng-forward', TaskComponent);
+bundle('ng-course-next.ng-forward', [ TaskComponent, TaskEditComponent ]);
 
 angular.module('ngcourse.router', ['ui.router'])
   .config(RouterConfig)
@@ -60,10 +60,7 @@ angular.module('ngcourse.tasks', ['ng-course-next.ng-forward'])
     TaskListComponent.directiveFactory)
   .directive(
     TaskAddComponent.selector,
-    TaskAddComponent.directiveFactory)
-  .directive(
-    TaskEditComponent.selector,
-    TaskEditComponent.directiveFactory);
+    TaskAddComponent.directiveFactory);
 
 angular.module('ngcourse.users', [])
   .service('usersStore', UsersStore)

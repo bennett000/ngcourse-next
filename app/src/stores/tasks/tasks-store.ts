@@ -1,9 +1,12 @@
 import {makeAuthenticatedMethod} from '../../utils/store-utils';
 import {TASK_ACTIONS} from '../../actions/action-constants';
+import {Injectable, Inject} from 'ng-forward';
 
 import {List, fromJS} from 'immutable';
 import * as Rx from 'rx';
 
+@Injectable('tasksStore')
+@Inject('koast', 'dispatcher')
 export class TasksStore {
   private _tasksSubject: Rx.ReplaySubject<any>;
   private _tasks: List<any>;
@@ -15,11 +18,6 @@ export class TasksStore {
   private deleteTask: Function;
   private getTask: Function;
 
-  static $inject = [
-    'koast',
-    'dispatcher'
-  ];
-  
   constructor(
     private koast,
     private dispatcher: Rx.Subject<any>

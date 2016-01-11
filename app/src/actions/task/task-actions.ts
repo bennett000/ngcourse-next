@@ -1,8 +1,9 @@
 import {TASK_ACTIONS} from '../action-constants';
+import {Injectable, Inject} from 'ng-forward';
 
+@Injectable('taskActions')
+@Inject('dispatcher')
 export class TaskActions {
-
-  static $inject = ['dispatcher'];
 
   constructor(
     private dispatcher: Rx.Subject<any>) { }
