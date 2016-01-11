@@ -1,9 +1,8 @@
-export class ServerService {
+import {Injectable, Inject} from 'ng-forward';
 
-  static $inject = [
-    '$http',
-    'API_BASE_URL'
-  ];
+@Injectable
+@Inject('$http', 'API_BASE_URL')
+export class ServerService {
 
   constructor(
     private $http: angular.IHttpService,

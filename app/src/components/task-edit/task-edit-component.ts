@@ -31,7 +31,7 @@ import {Component, Input, Inject} from 'ng-forward/index';
 </div>
   `
 })
-@Inject('$scope', TaskActions, TasksStore, '$stateParams', 'router')
+@Inject('$scope', TaskActions, TasksStore, '$stateParams', RouterService)
 export class TaskEditComponent {
   private _task: any;
   private _errorMessage: string;

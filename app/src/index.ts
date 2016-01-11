@@ -52,19 +52,17 @@ bundle('ng-course-next.ng-forward-tasks', [
   TaskAddComponent
 ]);
 bundle('ng-course-next.ng-forward-dispatch', [DispatcherService]);
+bundle('ng-course-next.ng-forward-server', [ServerService]);
 
 angular.module('ngcourse.router', ['ui.router', 'ng-course-next.ng-forward'])
  .config(RouterConfig);
-
-angular.module('ngcourse.server', [])
-  .service('server', ServerService);
 
 
 angular.module('ngcourse', [
     'ng-course-next.ng-forward-auth',
     'ng-course-next.ng-forward-tasks',
     'ng-course-next.ng-forward-users',
-    'ngcourse.server',
+    'ng-course-next.ng-forward-server',
     'ngcourse.router',
     'ng-course-next.ng-forward-dispatch',
     'koast'])

@@ -57,7 +57,7 @@ export class RouterConfig {
   }
 }
 
-@Injectable('router')
+@Injectable
 @Inject('$state')
 export class RouterService {
 
