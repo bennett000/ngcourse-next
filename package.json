@@ -27,6 +27,8 @@
     "immutable": "^3.7.5",
     "koast-angular": "^0.2.2",
     "lodash-compat": "^3.10.1",
+    "ng-forward": "0.0.1-alpha.11",
+    "reflect-metadata": "^0.1.3",
     "rx": "4.0.0"
   },
   "devDependencies": {

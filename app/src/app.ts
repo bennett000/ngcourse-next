@@ -8,16 +8,18 @@ import '../css/styles.css';
 
 import * as angular from 'angular';
 import * as Rx from 'rx';
+import 'reflect-metadata';
+import {bundle, bootstrap} from 'ng-forward';
 
 import {
-  ServerService, 
-  RouterService, 
+  ServerService,
+  RouterService,
   RouterConfig
 } from './services';
 
 import {
-  TasksStore, 
-  UsersStore, 
+  TasksStore,
+  UsersStore,
   AuthenticationStore
 } from './stores';
 
@@ -31,8 +33,8 @@ import {
 } from './components';
 
 import {
-  TaskActions, 
-  UserActions, 
+  TaskActions,
+  UserActions,
   AuthenticationActions
 } from './actions';
 
