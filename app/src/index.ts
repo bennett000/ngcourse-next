@@ -10,6 +10,7 @@ import * as angular from 'angular';
 import * as Rx from 'rx';
 import 'reflect-metadata';
 import {bundle, bootstrap} from 'ng-forward';
+import {App} from './containers/app';
 
 import {
   ServerService,
@@ -101,6 +102,4 @@ angular.module('ngcourse', [
     });
   });
 
-angular.element(document).ready(function() {
-  angular.bootstrap(document, ['ngcourse']);
-});
+bootstrap(App, ['ngcourse']);
