@@ -1,14 +1,12 @@
 import {AUTHENTICATION_ACTIONS} from '../../actions/action-constants';
+import {Injectable, Inject} from 'ng-forward';
 
+@Injectable('authenticationStore')
+@Inject('koast', 'dispatcher')
 export class AuthenticationStore {
 
   private _userSubject: Rx.ReplaySubject<any>;
   private _user: any;
-
-  static $inject = [
-    'koast',
-    'dispatcher'
-  ];
 
   constructor(
     private koast,

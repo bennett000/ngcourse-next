@@ -1,9 +1,10 @@
 import {AUTHENTICATION_ACTIONS} from '../action-constants';
+import {Injectable, Inject} from 'ng-forward';
 
+@Injectable('authenticationActions')
+@Inject('dispatcher')
 export class AuthenticationActions {
 
-  static $inject = ['dispatcher'];
-  
   constructor(
     private dispatcher: Rx.Subject<any>) { }
 

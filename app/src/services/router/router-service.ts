@@ -1,4 +1,5 @@
 import {TaskListComponent} from '../../components/index';
+import {Injectable, Inject} from 'ng-forward';
 
 export class RouterConfig {
 
@@ -47,7 +48,7 @@ export class RouterConfig {
         template: 'My account',
         resolve: {
           timeout: function($timeout) {
-            return $timeout(function() { 
+            return $timeout(function() {
               // delay
             }, 3000);
           }
@@ -56,9 +57,9 @@ export class RouterConfig {
   }
 }
 
+@Injectable('router')
+@Inject('$state')
 export class RouterService {
-
-  static $inject = ['$state'];
 
   constructor(private $state: angular.ui.IStateService) { }
 

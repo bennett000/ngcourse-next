@@ -1,9 +1,10 @@
 import {USER_ACTIONS} from '../action-constants';
 import * as Rx from 'rx';
+import {Injectable, Inject} from 'ng-forward';
 
+@Injectable('userActions')
+@Inject('dispatcher')
 export class UserActions {
-
-  static $inject = ['dispatcher'];
 
   constructor(private dispatcher: Rx.Subject<any>) { }
 

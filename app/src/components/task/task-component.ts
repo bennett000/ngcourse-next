@@ -29,7 +29,7 @@ import {Component, Input} from 'ng-forward/index';
 })
 export class TaskComponent {
 
-  static SELECTOR:string = 'ngc-task';
+  static SELECTOR: string = 'ngc-task';
 
   @Input() task: any;
   @Input() user: any;
