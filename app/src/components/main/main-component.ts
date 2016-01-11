@@ -3,33 +3,56 @@ from '../../stores/authentication/authentication-store';
 import {UsersStore} from '../../stores/users/users-store';
 import {AuthenticationActions}
 from '../../actions/authentication/authentication-actions';
+import {Component, Inject} from 'ng-forward';
 
+@Component({
+  selector: MainComponent.SELECTOR,
+  template: `
+<ngc-login-form
+  ng-hide="ctrl.user.isAuthenticated"
+  (on-submit)="ctrl.login(data)"
+  [error-message]="ctrl.errorMessage">
+</ngc-login-form>
+
+<div class="clearfix white bg-blue"
+  ng-show="ctrl.user.isAuthenticated">
+  <div class="left col-4 aqua">
+    <p class="btn py2 m0 truncate">
+      <i class="fa fa-bolt px1"></i>
+      Hello,
+      <span>
+        {{ctrl.displayName}}
+      </span>!
+    </p>
+  </div>
+  <div class="right">
+    <a class="btn py2 m0"
+      ui-sref="tasks.add">
+      <i class="fa fa-plus-circle"></i> Add Task
+    </a>
+    <a id="qa-logout-link"
+      class="btn py2 m0"
+      href="#"
+      ng-click="ctrl.logout()">
+      Logout
+    </a>
+  </div>
+</div>
+
+<div class="px2"
+  ng-show="ctrl.user.isAuthenticated"
+  ng-transclude>
+</div>
+  `
+})
+@Inject('$scope', AuthenticationStore, AuthenticationActions, UsersStore)
 export class MainComponent {
 
   private _user: any;
-  private _displayName: String;
-  private _errorMessage: String;
+  private _displayName: string;
+  private _errorMessage: string;
 
-  static selector = 'ngcMain';
-
-  static directiveFactory: ng.IDirectiveFactory = () => {
-    return {
-      transclude: true,
-      restrict: 'E',
-      scope: {},
-      controllerAs: 'ctrl',
-      bindToController: true,
-      controller: MainComponent,
-      template: require('./main-component.html')
-    };
-  };
-
-  static $inject = [
-    '$scope',
-    'authenticationStore',
-    'authenticationActions',
-    'usersStore'
-  ];
+  static SELECTOR = 'ngc-main';
 
   constructor(
     private $scope: angular.IScope,

@@ -2,9 +2,10 @@ import {makeAuthenticatedMethod} from '../../utils/store-utils';
 import {USER_ACTIONS} from '../../actions/action-constants';
 import {List, Map, fromJS} from 'immutable';
 import {Injectable, Inject} from 'ng-forward';
+import {DispatcherService} from '../../services/dispatcher/dispatcher-service';
 
 @Injectable('usersStore')
-@Inject('koast', 'dispatcher')
+@Inject('koast', DispatcherService)
 export class UsersStore {
 
   private _users: Map<String, any>;

@@ -1,8 +1,9 @@
 import {AUTHENTICATION_ACTIONS} from '../../actions/action-constants';
 import {Injectable, Inject} from 'ng-forward';
+import {DispatcherService} from '../../services/dispatcher/dispatcher-service';
 
 @Injectable('authenticationStore')
-@Inject('koast', 'dispatcher')
+@Inject('koast', DispatcherService)
 export class AuthenticationStore {
 
   private _userSubject: Rx.ReplaySubject<any>;

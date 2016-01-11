@@ -4,9 +4,10 @@ import {Injectable, Inject} from 'ng-forward';
 
 import {List, fromJS} from 'immutable';
 import * as Rx from 'rx';
+import {DispatcherService} from '../../services/dispatcher/dispatcher-service';
 
 @Injectable('tasksStore')
-@Inject('koast', 'dispatcher')
+@Inject('koast', DispatcherService)
 export class TasksStore {
   private _tasksSubject: Rx.ReplaySubject<any>;
   private _tasks: List<any>;

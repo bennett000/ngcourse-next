@@ -15,7 +15,8 @@ import {App} from './containers/app';
 import {
   ServerService,
   RouterService,
-  RouterConfig
+  RouterConfig,
+  DispatcherService
 } from './services';
 
 import {
@@ -50,6 +51,7 @@ bundle('ng-course-next.ng-forward-tasks', [
   TaskComponent, TaskEditComponent, TaskListComponent, TaskActions, TasksStore,
   TaskAddComponent
 ]);
+bundle('ng-course-next.ng-forward-dispatch', [DispatcherService]);
 
 angular.module('ngcourse.router', ['ui.router', 'ng-course-next.ng-forward'])
  .config(RouterConfig);
@@ -57,8 +59,6 @@ angular.module('ngcourse.router', ['ui.router', 'ng-course-next.ng-forward'])
 angular.module('ngcourse.server', [])
   .service('server', ServerService);
 
-angular.module('ngcourse.dispatcher', [])
-  .service('dispatcher', Rx.Subject);
 
 angular.module('ngcourse', [
     'ng-course-next.ng-forward-auth',
@@ -66,11 +66,8 @@ angular.module('ngcourse', [
     'ng-course-next.ng-forward-users',
     'ngcourse.server',
     'ngcourse.router',
-    'ngcourse.dispatcher',
+    'ng-course-next.ng-forward-dispatch',
     'koast'])
-  .directive(
-    MainComponent.selector,
-    MainComponent.directiveFactory)
   .constant('API_BASE_URL', 'http://ngcourse.herokuapp.com')
   .run((koast, API_BASE_URL) => {
     koast.init({
