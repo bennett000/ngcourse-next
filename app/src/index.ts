@@ -47,7 +47,8 @@ bundle('ng-course-next.ng-forward-users', [
   UserActions, UsersStore
 ]);
 bundle('ng-course-next.ng-forward-tasks', [
-  TaskComponent, TaskEditComponent, TaskListComponent, TaskActions, TasksStore
+  TaskComponent, TaskEditComponent, TaskListComponent, TaskActions, TasksStore,
+  TaskAddComponent
 ]);
 
 angular.module('ngcourse.router', ['ui.router', 'ng-course-next.ng-forward'])
@@ -58,17 +59,6 @@ angular.module('ngcourse.authentication', ['ng-course-next.ng-forward-auth'])
   LoginFormComponent.selector,
   LoginFormComponent.directiveFactory);
 
-angular.module('ngcourse.tasks', ['ng-course-next.ng-forward-tasks'])
-  .service('tasksStore', TasksStore)
-  .service('tasksActions', TaskActions)
-  .directive(
-    TaskAddComponent.selector,
-    TaskAddComponent.directiveFactory);
-
-angular.module('ngcourse.users', [])
-  .service('usersStore', UsersStore)
-  .service('usersActions', UserActions);
-
 angular.module('ngcourse.server', [])
   .service('server', ServerService);
 
@@ -77,8 +67,8 @@ angular.module('ngcourse.dispatcher', [])
 
 angular.module('ngcourse', [
   'ngcourse.authentication',
-  'ngcourse.tasks',
-  'ngcourse.users',
+  'ng-course-next.ng-forward-tasks',
+  'ng-course-next.ng-forward-users',
   'ngcourse.server',
   'ngcourse.router',
   'ngcourse.dispatcher',
