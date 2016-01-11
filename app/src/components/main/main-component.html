@@ -1,15 +1,15 @@
 <ngc-login-form
   ng-hide="ctrl.user.isAuthenticated"
-  on-submit="ctrl.login(data)"
-  error-message="ctrl.errorMessage">
+  (on-submit)="ctrl.login(data)"
+  [error-message]="ctrl.errorMessage">
 </ngc-login-form>
 
 <div class="clearfix white bg-blue"
   ng-show="ctrl.user.isAuthenticated">
   <div class="left col-4 aqua">
     <p class="btn py2 m0 truncate">
-      <i class="fa fa-bolt px1"></i> 
-      Hello, 
+      <i class="fa fa-bolt px1"></i>
+      Hello,
       <span>
         {{ctrl.displayName}}
       </span>!

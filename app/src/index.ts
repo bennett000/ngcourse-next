@@ -41,7 +41,7 @@ import {
 
 bundle('ng-course-next.ng-forward', [ RouterService ]);
 bundle('ng-course-next.ng-forward-auth', [
-  AuthenticationStore, AuthenticationActions
+  AuthenticationStore, AuthenticationActions, LoginFormComponent
 ]);
 bundle('ng-course-next.ng-forward-users', [
   UserActions, UsersStore
@@ -54,11 +54,6 @@ bundle('ng-course-next.ng-forward-tasks', [
 angular.module('ngcourse.router', ['ui.router', 'ng-course-next.ng-forward'])
  .config(RouterConfig);
 
-angular.module('ngcourse.authentication', ['ng-course-next.ng-forward-auth'])
-  .directive(
-  LoginFormComponent.selector,
-  LoginFormComponent.directiveFactory);
-
 angular.module('ngcourse.server', [])
   .service('server', ServerService);
 
@@ -66,13 +61,13 @@ angular.module('ngcourse.dispatcher', [])
   .service('dispatcher', Rx.Subject);
 
 angular.module('ngcourse', [
-  'ngcourse.authentication',
-  'ng-course-next.ng-forward-tasks',
-  'ng-course-next.ng-forward-users',
-  'ngcourse.server',
-  'ngcourse.router',
-  'ngcourse.dispatcher',
-  'koast'])
+    'ng-course-next.ng-forward-auth',
+    'ng-course-next.ng-forward-tasks',
+    'ng-course-next.ng-forward-users',
+    'ngcourse.server',
+    'ngcourse.router',
+    'ngcourse.dispatcher',
+    'koast'])
   .directive(
     MainComponent.selector,
     MainComponent.directiveFactory)
