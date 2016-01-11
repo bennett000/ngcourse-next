@@ -20,6 +20,7 @@
     "url": "https://github.com/rangle/ngcourse-next/issues"
   },
   "dependencies": {
+    "@reactivex/rxjs": "^5.0.0-beta.0",
     "angular": "^1.4.7",
     "angular-ui-router": "^0.2.15",
     "basscss": "^7.0.4",

@@ -4,14 +4,14 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, 'app'),
-  
+
   stats: {
     colors: true,
     reasons: true
   },
-  
+
   entry: {
-    app: './src/app.ts',
+    app: './src/index.ts',
     vendor: [
       'lodash-compat',
       'immutable',
@@ -23,7 +23,7 @@ module.exports = {
       'font-awesome/css/font-awesome.css'
     ]
   },
-  
+
   output: {
     path: path.resolve(__dirname, 'app', '__build'),
     filename: '[name].[hash].bundle.js',
@@ -31,13 +31,13 @@ module.exports = {
     sourceMapFilename: '[name].[hash].bundle.js.map',
     chunkFilename: '[id].chunk.js'
   },
-  
+
   devtool: 'source-map',
-  
+
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
   },
-  
+
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor', '[name].[hash].bundle.js'),
     new HtmlWebpackPlugin({
@@ -46,7 +46,7 @@ module.exports = {
       minify: false
     })
   ],
-  
+
   module: {
     preLoaders: [{
       test: /\.ts$/,
@@ -63,7 +63,7 @@ module.exports = {
       { test: /\.ttf/, loader: 'url' },
     ]
   },
-  
+
   devServer: {
     inline: true,
     colors: true,
